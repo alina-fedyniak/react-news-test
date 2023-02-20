@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import MainLayout from "./components/Layout/MainLayout/MainLayout";
 
 const StyledWrapper = styled.div`
-  padding: 5rem;
   text-align: center;
 `;
 
-function App() {
+const App = () => {
+
     return (
         <StyledWrapper>
-            <h1>My App</h1>
+            <MainLayout>
+                <h1>My App</h1>
+            </MainLayout>
         </StyledWrapper>
     );
 }
