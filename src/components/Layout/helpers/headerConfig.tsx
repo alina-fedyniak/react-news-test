@@ -15,4 +15,4 @@ export const pagesLink: Array<THeaderLink> = [
         route: 'Routes'
     }];
 
-export const settings: Array<string> = ['Profile', 'Account', 'Dashboard', 'Logout'];
+export const settings: Array<string> = ['Profile', 'Logout'];
