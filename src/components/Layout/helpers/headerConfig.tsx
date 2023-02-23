@@ -1,4 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+export enum News {
+    NEWS = '/news',
+}
 
 export type THeaderLink = {
     title: string;
@@ -7,12 +9,12 @@ export type THeaderLink = {
 
 export const pagesLink: Array<THeaderLink> = [
     {
-        title: 'Posts',
-        route: 'Routes'
+        title: 'News',
+        route: News.NEWS
     },
     {
         title: 'Blog',
-        route: 'Routes'
+        route: News.NEWS
     }];
 
 export const settings: Array<string> = ['Profile', 'Logout'];

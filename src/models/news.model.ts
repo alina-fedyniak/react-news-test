@@ -1,8 +1,8 @@
-export enum NewEndpoints {
+export enum NewsByIdEndpoints {
   ROOT = '/posts',
 }
-export const getNewEndpoints = ({ id }: { id: number }) => ({
-  GET_BY_ID: `${NewEndpoints.ROOT}/${id}`,
+export const getNewsByIdEndpoints = ({ id }: { id: number }) => ({
+  GET_BY_ID: `${NewsByIdEndpoints.ROOT}/${id}`,
 });
 
 export enum NewsEndpoints {
@@ -13,7 +13,7 @@ export const staticNewsCardEndpoints = {
   GET_NEWS: `${NewsEndpoints.ROOT}`,
 };
 
-export interface INew {
+export interface INews {
   id: number;
   title: string;
   body: string;
@@ -26,14 +26,14 @@ export interface IGetNewsDTO{
   limit?: number;
 }
 
-export interface IGetNewDTO{
+export interface IGetNewByIdDTO{
   id: number;
 }
 
 export interface IGetNewsResponse {
-  posts: INew[];
+  posts: INews[];
 }
 
-export interface IGetNewResponse {
-  post: INew;
+export interface IGetNewByIdResponse {
+  post: INews;
 }

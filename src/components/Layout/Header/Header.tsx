@@ -1,8 +1,5 @@
-// Globals
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-
-// Components
 import { StyledWrap } from './HeaderStyles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,8 +14,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
-//Helpers
 import {pagesLink, settings} from "../helpers/headerConfig";
 
 const Header = () => {
@@ -95,11 +90,11 @@ const Header = () => {
                             >
                                 {pagesLink.map((page) => (
                                     <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                                        {/*<NavLink*/}
-                                        {/*    to={page.route}*/}
-                                        {/*>*/}
-                                        {/*    <Typography textAlign="center">{page.title}</Typography>*/}
-                                        {/*</NavLink>*/}
+                                        <NavLink
+                                            to={page.route}
+                                        >
+                                            <Typography textAlign="center">{page.title}</Typography>
+                                        </NavLink>
                                     </MenuItem>
                                 ))}
                             </Menu>
