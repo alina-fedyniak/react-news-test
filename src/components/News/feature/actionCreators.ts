@@ -3,12 +3,11 @@ import { NEWS_SLICE_NAME } from './models';
 
 import {
     IGetNewsDTO,
-    IGetNewByIdDTO,
+    IGetNewsByIdDTO,
     IGetNewsResponse,
-    IGetNewByIdResponse,
+    IGetNewsByIdResponse,
 } from '../../../models/news.model';
 import NewsAPI from "../../../api/NewsAPI";
-
 
 export const getNews = createAsyncThunk<IGetNewsResponse,
     IGetNewsDTO>(
@@ -20,10 +19,10 @@ export const getNews = createAsyncThunk<IGetNewsResponse,
     }
 );
 
-export const getNewsById = createAsyncThunk<IGetNewByIdResponse,
-    IGetNewByIdDTO>(
+export const getNewsById = createAsyncThunk<IGetNewsByIdResponse,
+    IGetNewsByIdDTO>(
     `${NEWS_SLICE_NAME}/getNewsById`,
-    async (data: IGetNewByIdDTO) => {
+    async (data: IGetNewsByIdDTO) => {
         const response = await NewsAPI.getNewsById(data);
 
         return response.data;

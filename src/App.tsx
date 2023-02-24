@@ -1,22 +1,16 @@
-import styled from 'styled-components';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import {RouteNav} from "./routing/routing";
-import Header from "./components/Layout/Header/Header";
-
-const StyledWrapper = styled.div`
-  text-align: center;
-`;
+import MainLayout from "./components/Layout/MainLayout/MainLayout";
 
 const AppRoot = () => {
 
     return (
         <>
             <Provider store={store}>
-                <StyledWrapper>
-                    <Header/>
+                <MainLayout>
                     <RouteNav/>
-                </StyledWrapper>
+                </MainLayout>
             </Provider>
         </>
     );

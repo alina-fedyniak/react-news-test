@@ -13,7 +13,7 @@ const NewsCardContainer = () => {
     const { t } = useTranslation(['common']);
     const dispatch = useAppDispatch();
     const news = useAppState(selectNews);
-    console.log(news)
+    //console.log(news)
 
     useEffect(() => {
         dispatch(getNews({}));

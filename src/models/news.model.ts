@@ -22,18 +22,25 @@ export interface INews {
   reactions: number;
 }
 
+export interface IPagination {
+  total: number;
+  skip: number;
+  limit: number;
+}
+
 export interface IGetNewsDTO{
   limit?: number;
 }
 
-export interface IGetNewByIdDTO{
+export interface IGetNewsByIdDTO{
   id: number;
 }
 
 export interface IGetNewsResponse {
   posts: INews[];
+  meta: IPagination;
 }
 
-export interface IGetNewByIdResponse {
+export interface IGetNewsByIdResponse {
   post: INews;
 }

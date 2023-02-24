@@ -1,8 +1,8 @@
 import { httpClient, ApiResponse } from '../utils';
 import {
-  IGetNewByIdDTO,
+  IGetNewsByIdDTO,
   IGetNewsDTO,
-  IGetNewByIdResponse,
+  IGetNewsByIdResponse,
   IGetNewsResponse,
   staticNewsCardEndpoints, getNewsByIdEndpoints,
 } from '../models/news.model';
@@ -19,10 +19,10 @@ class NewsAPI {
   static getNewsById({
       id,
       ...params
-    }: IGetNewByIdDTO): ApiResponse<IGetNewByIdResponse> {
+    }: IGetNewsByIdDTO): ApiResponse<IGetNewsByIdResponse> {
     const { GET_BY_ID } = getNewsByIdEndpoints({ id });
 
-    return httpClient.get<IGetNewByIdResponse>(GET_BY_ID, { params });
+    return httpClient.get<IGetNewsByIdResponse>(GET_BY_ID, { params });
   }
 }
 export default NewsAPI;
