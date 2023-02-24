@@ -17,7 +17,6 @@ const NewsContent = () => {
         dispatch(getNewsById({id: Number(id)}));
     }, []);
 
-
     return (
         <Card
             sx={{
