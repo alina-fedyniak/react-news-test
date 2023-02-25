@@ -1,5 +1,8 @@
 export enum News {
     NEWS = '/news',
+    PROFILE = '/profile',
+    LOGOUT = '/',
+    BLOG = '/',
 }
 
 export type THeaderLink = {
@@ -14,7 +17,16 @@ export const pagesLink: Array<THeaderLink> = [
     },
     {
         title: 'Blog',
-        route: News.NEWS
+        route: News.BLOG
     }];
 
-export const settings: Array<string> = ['Profile', 'Logout'];
+export const settings: Array<THeaderLink> = [
+    {
+        title: 'Profile',
+        route: News.PROFILE
+    },
+    {
+        title: 'Logout',
+        route: News.LOGOUT
+    }
+   ];

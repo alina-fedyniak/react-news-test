@@ -8,12 +8,12 @@ import {
 import NewsCard from "../NewsCard/NewsCard";
 import {selectNews} from "../feature/selectors";
 import {getNews} from "../feature/actionCreators";
+import Button from '@mui/material/Button';
 
 const NewsCardContainer = () => {
     const { t } = useTranslation(['common']);
     const dispatch = useAppDispatch();
     const news = useAppState(selectNews);
-    //console.log(news)
 
     useEffect(() => {
         dispatch(getNews({}));
@@ -33,6 +33,14 @@ const NewsCardContainer = () => {
                     )
                 })}
             </StyledBodyContainer>
+            <Button
+                variant="contained"
+                sx={{
+                    background: '#72c0b5',
+                }}
+            >
+                {t('showMore')}
+            </Button>
         </StyledWrap>
     );
 };

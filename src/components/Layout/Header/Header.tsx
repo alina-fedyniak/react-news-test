@@ -15,8 +15,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {pagesLink, settings} from "../helpers/headerConfig";
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+    const { t } = useTranslation(['common']);
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -56,7 +58,7 @@ const Header = () => {
                             }}
                         >
                             <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>
-                                LOGO
+                                {t('logo')}
                             </Link>
                         </Typography>
                         <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
@@ -119,7 +121,7 @@ const Header = () => {
                             }}
                         >
                             <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>
-                                LOGO
+                                {t('logo')}
                             </Link>
                         </Typography>
                         <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
@@ -161,8 +163,15 @@ const Header = () => {
                                 onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">{setting}</Typography>
+                                    <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center">
+                                            <Link
+                                                to={setting.route}
+                                                style={{textDecoration: 'none', color: 'inherit'}}
+                                            >
+                                                {setting.title}
+                                            </Link>
+                                        </Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>
