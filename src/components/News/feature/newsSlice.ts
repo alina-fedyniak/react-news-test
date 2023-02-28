@@ -31,7 +31,6 @@ export const newsSlice = createSlice({
                   state.newsList && meta.arg.skip
                       ? [...state.newsList, ...payload.posts]
                       : payload.posts;
-              // @ts-ignore
               state.pagination.skip += state.pagination.limit;
           })
           .addMatcher(isFulfilled(getNewsById), (state: NewsState, action) => {

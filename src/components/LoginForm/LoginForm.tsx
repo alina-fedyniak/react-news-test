@@ -38,9 +38,9 @@ const LoginForm = () => {
                 <div>
                     <TextField
                         id="filled-login-input"
-                        label="Login"
-                        type="login"
-                        autoComplete="current-login"
+                        label="User Name"
+                        type="userName"
+                        autoComplete="current-userName"
                         variant="filled"
                     />
                 </div>
@@ -58,6 +58,7 @@ const LoginForm = () => {
                     variant="contained"
                     sx={{
                         background: '#72c0b5',
+                        marginTop: 3
                 }}
                 >
                     {t('login')}
