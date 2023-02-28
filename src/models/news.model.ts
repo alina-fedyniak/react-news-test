@@ -1,3 +1,5 @@
+import {IPaginationDTO} from "./pagination.model";
+
 export enum NewsByIdEndpoints {
   ROOT = '/posts',
 }
@@ -22,14 +24,9 @@ export interface INews {
   reactions: number;
 }
 
-export interface IPagination {
-  total: number;
-  skip: number;
-  limit: number;
-}
-
-export interface IGetNewsDTO{
-  limit?: number;
+export interface IGetNewsDTO extends IPaginationDTO{
+  limit?: number
+  skip?: number;
 }
 
 export interface IGetNewsByIdDTO{
@@ -38,7 +35,9 @@ export interface IGetNewsByIdDTO{
 
 export interface IGetNewsResponse {
   posts: INews[];
-  meta: IPagination;
+  total: number;
+  skip: number;
+  limit: number;
 }
 
 export interface IGetNewsByIdResponse {

@@ -3,6 +3,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import NewsPage from "../pages/NewsPage/NewsPage";
 import NewsContentPage from "../pages/NewsContentPage/NewsContentPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
 
 export const RouteNav = () => {
     return (
@@ -26,9 +27,15 @@ export const RouteNav = () => {
                 }
             />
             <Route
-                path="/profile"
+                path="/login"
                 element={
                     <LoginPage/>
+                }
+            />
+            <Route
+                path="/profile"
+                element={
+                    <ProfilePage/>
                 }
             />
         </Routes>

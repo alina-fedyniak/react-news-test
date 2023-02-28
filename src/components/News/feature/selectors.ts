@@ -13,3 +13,8 @@ export const selectNewsById = createSelector(
     NewsSelector,
   (newsById: NewsState) => newsById.newsById,
 );
+
+export const selectNewsPagination = createSelector(
+    NewsSelector,
+  (newsList: NewsState) => newsList.pagination,
+);

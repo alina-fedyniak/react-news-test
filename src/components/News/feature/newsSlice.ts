@@ -20,37 +20,43 @@ export const newsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-        .addCase(resetAction, (state: NewsState, action) => ({
-          ...state,
-          ...action.payload[NEWS_SLICE_NAME],
-        }))
-      .addMatcher(isFulfilled(getNews), (state: NewsState, action) => {
-        const { payload } = action;
-        state.newsList = payload.posts;
-      })
-      .addMatcher(isFulfilled(getNewsById), (state: NewsState, action) => {
-        const {payload} = action;
-        console.log(payload)
-        // @ts-ignore
-        state.newsById = payload;
-      })
-      .addMatcher(
-        isPending(
-            getNews,
-            getNewsById
-        ),
-        (state: NewsState) => {},
-      )
-      .addMatcher(
-        isRejected(
-            getNews,
-            getNewsById
-        ),
-        (state: NewsState, action) => {
-          const { error } = action;
-        },
-      );
+      builder
+          .addCase(resetAction, (state: NewsState, action) => ({
+              ...state,
+              ...action.payload[NEWS_SLICE_NAME],
+          }))
+          .addMatcher(isFulfilled(getNews), (state: NewsState, action) => {
+              const {payload, meta} = action;
+              state.newsList =
+                  state.newsList && meta.arg.skip
+                      ? [...state.newsList, ...payload.posts]
+                      : payload.posts;
+              // @ts-ignore
+              state.pagination.skip += state.pagination.limit;
+          })
+          .addMatcher(isFulfilled(getNewsById), (state: NewsState, action) => {
+              const {payload} = action;
+              console.log(payload)
+              // @ts-ignore
+              state.newsById = payload;
+          })
+          .addMatcher(
+              isPending(
+                  getNews,
+                  getNewsById
+              ),
+              (state: NewsState) => {
+              },
+          )
+          .addMatcher(
+              isRejected(
+                  getNews,
+                  getNewsById
+              ),
+              (state: NewsState, action) => {
+                  const {error} = action;
+              },
+          );
   },
 });
 
