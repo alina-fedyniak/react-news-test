@@ -9,7 +9,7 @@ export interface NewsState {
     total: number;
     skip: number;
     limit: number;
-  } | null;
+  };
 }
 
 export const initialState: NewsState = {
