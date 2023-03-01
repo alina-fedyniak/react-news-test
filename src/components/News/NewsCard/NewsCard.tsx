@@ -6,6 +6,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 import {
     StyledText,
     StyledTitle
@@ -54,6 +56,9 @@ const NewsCard = ({
                 <Link to={`/news/${id}`} style={{textDecoration: 'none', color: 'inherit'}}>
                     <Button size="small">{t('learnMore')}</Button>
                 </Link>
+                <IconButton aria-label="delete" disabled color="primary">
+                    <DeleteIcon />
+                </IconButton>
             </CardActions>
         </Card>
     )

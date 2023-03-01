@@ -14,13 +14,16 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import {pagesLink, settings} from "../helpers/headerConfig";
+import {Routes, pagesLink, settings} from "../helpers/headerConfig";
 import { useTranslation } from 'react-i18next';
+import {useAppState} from "../../../store/hooks";
+import {selectIsAuthorised} from "../../Auth";
 
 const Header = () => {
     const { t } = useTranslation(['common']);
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const auth = useAppState(selectIsAuthorised);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -162,8 +165,12 @@ const Header = () => {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {settings.map((setting) => (
-                                    <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
+                                {settings.map((setting) => {
+                                    if (auth && setting.route === Routes.LOGIN) {
+                                        return null;
+                                    }
+                                    return (
+                                        <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
                                         <Typography textAlign="center">
                                             <Link
                                                 to={setting.route}
@@ -173,7 +180,8 @@ const Header = () => {
                                             </Link>
                                         </Typography>
                                     </MenuItem>
-                                ))}
+                                    )
+                                })}
                             </Menu>
                         </Box>
                     </Toolbar>
