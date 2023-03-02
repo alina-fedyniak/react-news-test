@@ -4,5 +4,7 @@
   "showMore": "Показати ще",
   "logo": "Лого",
   "profileForm": "Форма",
-  "logIn": "Логін"
+  "logIn": "Логін",
+  "userName": "Імья",
+  "password": "Пароль"
 }

@@ -4,6 +4,7 @@ import NewsPage from "../pages/NewsPage/NewsPage";
 import NewsContentPage from "../pages/NewsContentPage/NewsContentPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import {RequireAuth} from "./RequireAuth";
 
 export const RouteNav = () => {
     return (
@@ -35,7 +36,9 @@ export const RouteNav = () => {
             <Route
                 path="/profile"
                 element={
-                    <ProfilePage/>
+                    <RequireAuth>
+                        <ProfilePage/>
+                    </RequireAuth>
                 }
             />
         </Routes>

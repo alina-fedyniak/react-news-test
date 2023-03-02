@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { StyledWrap } from './HeaderStyles';
 import AppBar from '@mui/material/AppBar';
@@ -16,14 +16,16 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {Routes, pagesLink, settings} from "../helpers/headerConfig";
 import { useTranslation } from 'react-i18next';
-import {useAppState} from "../../../store/hooks";
+import {useAppDispatch, useAppState} from "../../../store/hooks";
 import {selectIsAuthorised} from "../../Auth";
+import {logOut} from "../../Auth/feature/authSlice";
 
 const Header = () => {
     const { t } = useTranslation(['common']);
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const auth = useAppState(selectIsAuthorised);
+    const dispatch = useAppDispatch();
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -38,6 +40,7 @@ const Header = () => {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+        dispatch(logOut());
     };
 
     return (
@@ -146,7 +149,7 @@ const Header = () => {
                         <Box sx={{flexGrow: 0}}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                    <Avatar alt="Remy Sharp" src="/images/mock-img.jpg"/>
+                                    <Avatar alt="Remy Sharp" src=""/>
                                 </IconButton>
                             </Tooltip>
                             <Menu

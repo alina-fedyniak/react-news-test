@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
@@ -10,6 +10,11 @@ import {logIn} from "../feature/authSlice";
 import {useAppDispatch} from "../../../store/hooks";
 import {DataBaseAuth} from "../helpers/authConfig";
 
+export interface IValues {
+    username: string;
+    password: string;
+}
+
 const initialValues = { username: "", password: "" };
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -17,12 +22,16 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const validate = (values: any) => {
     return sleep(2000).then(() => {
         const errors: any = {};
-        if (![DataBaseAuth.USERNAME].includes(values.username)) {
-            errors.username = 'Nice try';
+        if (
+            ![DataBaseAuth.USERNAME].includes(values.username)
+        ) {
+            errors.username = 'Not correct User Name or Password';
+        } else if (
+            ![DataBaseAuth.PASSWORD].includes(values.password)
+        ) {
+            errors.password = 'Not correct User Name or Password';
         }
-        if (![DataBaseAuth.PASSWORD].includes(values.password)) {
-            errors.password = 'Nice try';
-        }
+
         return errors;
     });
 };
@@ -32,7 +41,7 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const onSubmit = (data: any, actions: FormikHelpers<any>) => {
+    const onSubmit = (data: IValues, actions: FormikHelpers<any>) => {
         localStorage.setItem("username", "admin");
         dispatch(logIn({username: data.username, password: data.password}));
         actions.resetForm({values: initialValues});
@@ -44,6 +53,8 @@ const LoginForm = () => {
             initialValues={initialValues}
             onSubmit={onSubmit}
             validate={validate}
+            validateOnChange={false}
+            validateOnBlur={false}
         >
             {({errors}) => (
                 <Form>
@@ -59,7 +70,9 @@ const LoginForm = () => {
                                 boxShadow: '0px 10px 20px 5px rgba(0, 0, 0, 0.5)',
                                 padding: 5,
                                 borderRadius: 5,
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                width: '100%',
+                                maxWidth: '25ch'
                             }}
                         >
                             <Typography
@@ -70,24 +83,38 @@ const LoginForm = () => {
                             >
                                 {t('profileForm')}
                             </Typography>
-                            <div>
-                                <label htmlFor="username">User Name</label>
+                            <div
+                                style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                textAlign: 'start'
+                            }}
+                            >
+                                <label htmlFor="username">{t('userName')}</label>
                                 <Field
                                     id="username"
                                     name="username"
                                     placeholder="username"
                                 />
-                                {errors.username ? <Alert severity="error">{errors.username}</Alert> : null}
                             </div>
-                            <div>
-                                <label htmlFor="Password">First Name</label>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    textAlign: 'start'
+                                }}
+                            >
+                                <label htmlFor="Password">{t('password')}</label>
                                 <Field
                                     id="password"
                                     name="password"
                                     placeholder="password"
                                     type="password"
                                 />
-                                {errors.password ? <Alert severity="error">{errors.password}</Alert> : null}
+                                {errors.password || errors.username ?
+                                    <Alert severity="error">{errors.password}{errors.username}</Alert>
+                                    : null
+                                }
                             </div>
                             <Button
                                 type="submit"

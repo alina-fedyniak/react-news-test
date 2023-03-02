@@ -35,7 +35,6 @@ export const newsSlice = createSlice({
           })
           .addMatcher(isFulfilled(getNewsById), (state: NewsState, action) => {
               const {payload} = action;
-              console.log(payload)
               // @ts-ignore
               state.newsById = payload;
           })

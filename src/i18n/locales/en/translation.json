@@ -4,5 +4,7 @@
   "showMore": "Show More",
   "logo": "LOGO",
   "profileForm": "Profile Form",
-  "logIn": "Log in"
+  "logIn": "Log in",
+  "userName": "User Name",
+  "password": "Password"
 }

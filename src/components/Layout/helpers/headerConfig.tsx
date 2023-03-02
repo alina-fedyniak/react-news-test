@@ -1,7 +1,7 @@
 export enum Routes {
     NEWS = '/news',
     PROFILE = '/profile',
-    LOGOUT = '/logout',
+    LOGOUT = '/',
     BLOG = '/',
     LOGIN = '/login',
 }
