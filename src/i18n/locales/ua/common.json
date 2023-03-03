@@ -6,5 +6,7 @@
   "profileForm": "Форма",
   "logIn": "Логін",
   "userName": "Імья",
-  "password": "Пароль"
+  "password": "Пароль",
+  "myHomePage": "Моя Домашня Сторінка",
+  "profilePage": "Профіль Сторінка"
 }

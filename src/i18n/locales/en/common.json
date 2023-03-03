@@ -6,5 +6,7 @@
   "profileForm": "Profile Form",
   "logIn": "Log in",
   "userName": "User Name",
-  "password": "Password"
+  "password": "Password",
+  "myHomePage": "My Home Page",
+  "profilePage": "Profile Page"
 }

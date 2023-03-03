@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
@@ -37,16 +37,17 @@ const validate = (values: any) => {
 };
 
 const LoginForm = () => {
-    const { t } = useTranslation(['common']);
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const onSubmit = (data: IValues, actions: FormikHelpers<any>) => {
-        localStorage.setItem("username", "admin");
-        dispatch(logIn({username: data.username, password: data.password}));
-        actions.resetForm({values: initialValues});
-        navigate("/profile");
-    };
+    const onSubmit = useCallback(
+        (data: IValues, actions: FormikHelpers<any>) => {
+            localStorage.setItem("username", "admin");
+            dispatch(logIn({username: data.username, password: data.password}));
+            actions.resetForm({values: initialValues});
+            navigate("/profile");
+        }, []);
 
     return (
         <Formik

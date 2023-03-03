@@ -25,7 +25,7 @@ const NewsCard = ({
     title,
     body
 }: INewsCard) => {
-    const { t } = useTranslation(['common']);
+    const { t } = useTranslation();
 
     return (
         <Card sx={{maxWidth: 345}}>

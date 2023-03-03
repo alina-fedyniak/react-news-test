@@ -21,7 +21,7 @@ import {selectIsAuthorised} from "../../Auth";
 import {logOut} from "../../Auth/feature/authSlice";
 
 const Header = () => {
-    const { t } = useTranslation(['common']);
+    const { t } = useTranslation();
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const auth = useAppState(selectIsAuthorised);

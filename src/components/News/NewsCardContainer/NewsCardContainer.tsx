@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
 import {useAppDispatch, useAppState} from '../../../store/hooks';
 import {
@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import {PaginationFields} from "../../../models/pagination.model";
 
 const NewsCardContainer = () => {
-    const { t } = useTranslation(['common']);
+    const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const news = useAppState(selectNews);
     const pagination = useAppState(selectNewsPagination);
