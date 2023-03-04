@@ -1,13 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { NEWS_SLICE_NAME } from './models';
-
 import {
     IGetNewsDTO,
     IGetNewsByIdDTO,
     IGetNewsResponse,
-    IGetNewsByIdResponse,
+    IGetNewsByIdResponse, IDeleteNewsDTO,
 } from '../../../models/news.model';
-import NewsAPI from "../../../api/NewsAPI";
+import NewsAPI from '../../../api/NewsAPI';
 
 export const getNews = createAsyncThunk<IGetNewsResponse,
     IGetNewsDTO>(
@@ -24,6 +23,17 @@ export const getNewsById = createAsyncThunk<IGetNewsByIdResponse,
     `${NEWS_SLICE_NAME}/getNewsById`,
     async (data: IGetNewsByIdDTO) => {
         const response = await NewsAPI.getNewsById(data);
+
+        return response.data;
+    },
+);
+
+export const deleteNews = createAsyncThunk<
+    unknown,
+    IDeleteNewsDTO>(
+    `${NEWS_SLICE_NAME}/deleteNews`,
+    async (data: IDeleteNewsDTO) => {
+        const response = await NewsAPI.deleteNews(data);
 
         return response.data;
     },

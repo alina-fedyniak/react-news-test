@@ -1,15 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import { useTranslation } from 'react-i18next';
 import {useAppDispatch, useAppState} from '../../../store/hooks';
 import {
     StyledWrap,
     StyledBodyContainer,
 } from './NewsCardContainerStyled';
-import NewsCard from "../NewsCard/NewsCard";
-import {selectNews, selectNewsPagination} from "../feature/selectors";
-import {getNews} from "../feature/actionCreators";
+import NewsCard from '../NewsCard/NewsCard';
+import {selectNews, selectNewsPagination} from '../feature/selectors';
+import {deleteNews, getNews} from '../feature/actionCreators';
 import Button from '@mui/material/Button';
-import {PaginationFields} from "../../../models/pagination.model";
+import {PaginationFields} from '../../../models/pagination.model';
 
 const NewsCardContainer = () => {
     const { t } = useTranslation();
@@ -19,7 +19,14 @@ const NewsCardContainer = () => {
 
     useEffect(() => {
         dispatch(getNews({limit: pagination?.limit}));
-    }, []);
+    }, [dispatch, pagination.limit]);
+
+    const handleDeleteNews = useCallback(
+        (id: number) => {
+            dispatch(deleteNews({ id }));
+        },
+        [dispatch],
+    );
 
     const handleShowMore = () => {
         if (pagination) {
@@ -39,6 +46,7 @@ const NewsCardContainer = () => {
                                 key={item.id}
                                 title={item.title}
                                 body={item.body}
+                                handleDeleteNews={handleDeleteNews}
                             />
                         )
                     })
@@ -46,7 +54,7 @@ const NewsCardContainer = () => {
             </StyledBodyContainer>
             <Button
                 onClick={handleShowMore}
-                variant="contained"
+                variant='contained'
                 sx={{
                     background: '#72c0b5',
                 }}

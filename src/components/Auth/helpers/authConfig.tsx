@@ -1,4 +1,4 @@
 export enum DataBaseAuth {
-    USERNAME = "admin",
-    PASSWORD = "12345"
+    USERNAME = 'admin',
+    PASSWORD = '12345'
 }

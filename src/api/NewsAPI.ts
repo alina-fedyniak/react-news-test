@@ -4,7 +4,7 @@ import {
   IGetNewsDTO,
   IGetNewsByIdResponse,
   IGetNewsResponse,
-  staticNewsCardEndpoints, getNewsByIdEndpoints,
+  staticNewsCardEndpoints, getNewsByIdEndpoints, IDeleteNewsDTO,
 } from '../models/news.model';
 
 class NewsAPI {
@@ -23,6 +23,15 @@ class NewsAPI {
     const { GET_BY_ID } = getNewsByIdEndpoints({ id });
 
     return httpClient.get<IGetNewsByIdResponse>(GET_BY_ID, { params });
+  }
+
+  static deleteNews({
+    id,
+    ...params
+    }:IDeleteNewsDTO): ApiResponse<unknown> {
+    const { DELETE } = getNewsByIdEndpoints({id});
+
+    return httpClient.delete<unknown>(DELETE, {params});
   }
 }
 export default NewsAPI;

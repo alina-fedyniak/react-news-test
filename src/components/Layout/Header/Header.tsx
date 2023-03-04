@@ -14,11 +14,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import {Routes, pagesLink, settings} from "../helpers/headerConfig";
+import {Routes, pagesLink, settings} from '../helpers/headerConfig';
 import { useTranslation } from 'react-i18next';
-import {useAppDispatch, useAppState} from "../../../store/hooks";
-import {selectIsAuthorised} from "../../Auth";
-import {logOut} from "../../Auth/feature/authSlice";
+import {useAppDispatch, useAppState} from '../../../store/hooks';
+import {selectIsAuthorised} from '../../Auth';
+import {logOut} from '../../Auth/feature/authSlice';
 
 const Header = () => {
     const { t } = useTranslation();
@@ -50,14 +50,14 @@ const Header = () => {
 
     return (
         <StyledWrap>
-            <AppBar position="static">
-                <Container maxWidth="xl">
+            <AppBar position='static'>
+                <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         <AdbIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1}}/>
                         <Typography
-                            variant="h6"
+                            variant='h6'
                             noWrap
-                            component="div"
+                            component='div'
                             sx={{
                                 mr: 2,
                                 display: {xs: 'none', md: 'flex'},
@@ -68,23 +68,23 @@ const Header = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>
+                            <Link to='/' style={{textDecoration: 'none', color: 'inherit'}}>
                                 {t('logo')}
                             </Link>
                         </Typography>
                         <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
                             <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
+                                size='large'
+                                aria-label='account of current user'
+                                aria-controls='menu-appbar'
+                                aria-haspopup='true'
                                 onClick={handleOpenNavMenu}
-                                color="inherit"
+                                color='inherit'
                             >
                                 <MenuIcon/>
                             </IconButton>
                             <Menu
-                                id="menu-appbar"
+                                id='menu-appbar'
                                 anchorEl={anchorElNav}
                                 anchorOrigin={{
                                     vertical: 'bottom',
@@ -103,7 +103,7 @@ const Header = () => {
                             >
                                 {pagesLink.map((page) => (
                                     <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                                        <Typography textAlign="center">
+                                        <Typography textAlign='center'>
                                             <Link
                                                 to={page.route}
                                                 style={{textDecoration: 'none', color: 'inherit'}}
@@ -117,9 +117,9 @@ const Header = () => {
                         </Box>
                         <AdbIcon sx={{display: {xs: 'flex', md: 'none'}, mr: 1}}/>
                         <Typography
-                            variant="h5"
+                            variant='h5'
                             noWrap
-                            component="div"
+                            component='div'
                             sx={{
                                 mr: 2,
                                 display: {xs: 'flex', md: 'none'},
@@ -131,7 +131,7 @@ const Header = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>
+                            <Link to='/' style={{textDecoration: 'none', color: 'inherit'}}>
                                 {t('logo')}
                             </Link>
                         </Typography>
@@ -152,14 +152,14 @@ const Header = () => {
                             ))}
                         </Box>
                         <Box sx={{flexGrow: 0}}>
-                            <Tooltip title="Open settings">
+                            <Tooltip title='Open settings'>
                                 <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                    <Avatar alt="Remy Sharp" src=""/>
+                                    <Avatar alt='Remy Sharp' src=''/>
                                 </IconButton>
                             </Tooltip>
                             <Menu
                                 sx={{mt: '45px'}}
-                                id="menu-appbar"
+                                id='menu-appbar'
                                 anchorEl={anchorElUser}
                                 anchorOrigin={{
                                     vertical: 'top',
@@ -179,7 +179,7 @@ const Header = () => {
                                     }
                                     return (
                                         <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center">
+                                        <Typography textAlign='center'>
                                             <Link onClick={ () => act(setting.route)}
                                                 to={setting.route}
                                                 style={{textDecoration: 'none', color: 'inherit'}}

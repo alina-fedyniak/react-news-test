@@ -1,7 +1,4 @@
-// Modules
 import React, { ReactNode } from 'react';
-
-// Components
 import { StyledLayout } from '../Styles/LayoutStyles';
 import MainLayoutContent from '../MainLayoutContent/MainLayoutContent';
 

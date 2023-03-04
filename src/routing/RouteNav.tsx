@@ -1,40 +1,41 @@
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from "../pages/HomePage/HomePage";
-import NewsPage from "../pages/NewsPage/NewsPage";
-import NewsContentPage from "../pages/NewsContentPage/NewsContentPage";
-import LoginPage from "../pages/LoginPage/LoginPage";
-import ProfilePage from "../pages/ProfilePage/ProfilePage";
-import {RequireAuth} from "./RequireAuth";
+import HomePage from '../pages/HomePage/HomePage';
+import NewsPage from '../pages/NewsPage/NewsPage';
+import NewsContentPage from '../pages/NewsContentPage/NewsContentPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import {RequireAuth} from './RequireAuth';
 
 export const RouteNav = () => {
     return (
         <Routes>
             <Route
-                path="/"
+                path='/'
                 element={
                     <HomePage/>
                 }
             />
             <Route
-                path="/news"
+                path='/news'
                 element={
                     <NewsPage/>
                 }
             />
             <Route
-                path="/news/:id"
+                path='/news/:id'
                 element={
                     <NewsContentPage/>
                 }
             />
             <Route
-                path="/login"
+                path='/login'
                 element={
                     <LoginPage/>
                 }
             />
             <Route
-                path="/profile"
+                path='/profile'
                 element={
                     <RequireAuth>
                         <ProfilePage/>

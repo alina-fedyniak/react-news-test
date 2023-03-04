@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useCallback} from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -18,45 +18,58 @@ export interface INewsCard {
     id: number;
     title: string;
     body: string;
+    handleDeleteNews: (id: number) => void;
 }
 
 const NewsCard = ({
     id,
     title,
-    body
+    body,
+    handleDeleteNews
 }: INewsCard) => {
     const { t } = useTranslation();
 
+    const deleteNews = useCallback(() => {
+        handleDeleteNews(id);
+    }, [handleDeleteNews, id]);
+
     return (
-        <Card sx={{maxWidth: 345}}>
+        <Card sx={{
+            maxWidth: 345,
+            height: '100%',
+            display: 'grid',
+            gridTemplateRows: 'auto 1fr auto'
+        }}>
             <Link to={`/news/${id}`}>
                 <CardMedia
                     sx={{height: 140}}
-                    image="/images/mock-img.jpg"
-                    title="picture"
+                    image='/images/mock-img.jpg'
+                    title='picture'
                 />
             </Link>
             <CardContent>
                 <StyledTitle>
                     <Typography
                         gutterBottom
-                        variant="h5"
-                        component="div"
+                        variant='h5'
+                        component='div'
                     >
                         {title}
                     </Typography>
                 </StyledTitle>
                 <StyledText>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant='body2' color='text.secondary'>
                         {body}
                     </Typography>
                 </StyledText>
             </CardContent>
-            <CardActions>
+            <CardActions sx={{
+                justifyContent: 'space-between'
+            }}>
                 <Link to={`/news/${id}`} style={{textDecoration: 'none', color: 'inherit'}}>
-                    <Button size="small">{t('learnMore')}</Button>
+                    <Button size='small'>{t('learnMore')}</Button>
                 </Link>
-                <IconButton aria-label="delete" disabled color="primary">
+                <IconButton aria-label='delete' color='primary' onClick={deleteNews}>
                     <DeleteIcon />
                 </IconButton>
             </CardActions>

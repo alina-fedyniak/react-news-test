@@ -1,4 +1,4 @@
-import {INews} from "../../../models/news.model";
+import {INews} from '../../../models/news.model';
 
 export const NEWS_SLICE_NAME = 'news';
 

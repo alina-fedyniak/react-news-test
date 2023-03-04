@@ -1,10 +1,11 @@
-import {IPaginationDTO} from "./pagination.model";
+import {IPaginationDTO} from './pagination.model';
 
 export enum NewsByIdEndpoints {
   ROOT = '/posts',
 }
 export const getNewsByIdEndpoints = ({ id }: { id: number }) => ({
   GET_BY_ID: `${NewsByIdEndpoints.ROOT}/${id}`,
+  DELETE: `${NewsByIdEndpoints.ROOT}/${id}`,
 });
 
 export enum NewsEndpoints {
@@ -30,6 +31,10 @@ export interface IGetNewsDTO extends IPaginationDTO{
 }
 
 export interface IGetNewsByIdDTO{
+  id: number;
+}
+
+export interface IDeleteNewsDTO {
   id: number;
 }
 

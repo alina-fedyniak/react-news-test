@@ -5,17 +5,17 @@ import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
 import { Formik, Form, Field, FormikHelpers } from 'formik';
-import { useNavigate } from "react-router-dom";
-import {logIn} from "../feature/authSlice";
-import {useAppDispatch} from "../../../store/hooks";
-import {DataBaseAuth} from "../helpers/authConfig";
+import { useNavigate } from 'react-router-dom';
+import {logIn} from '../feature/authSlice';
+import {useAppDispatch} from '../../../store/hooks';
+import {DataBaseAuth} from '../helpers/authConfig';
 
 export interface IValues {
     username: string;
     password: string;
 }
 
-const initialValues = { username: "", password: "" };
+const initialValues = { username: '', password: '' };
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -47,7 +47,7 @@ const LoginForm = () => {
             dispatch(logIn({status: true}));
             actions.resetForm({values: initialValues});
             navigate('/profile');
-        }, []);
+        }, [dispatch, navigate]);
 
     return (
         <Formik
@@ -60,10 +60,10 @@ const LoginForm = () => {
             {({errors}) => (
                 <Form>
                     <Box sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "100vh"
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100vh'
                     }}>
                         <Box
                             sx={{
@@ -91,11 +91,11 @@ const LoginForm = () => {
                                 textAlign: 'start'
                             }}
                             >
-                                <label htmlFor="username">{t('userName')}</label>
+                                <label htmlFor='username'>{t('userName')}</label>
                                 <Field
-                                    id="username"
-                                    name="username"
-                                    placeholder="username"
+                                    id='username'
+                                    name='username'
+                                    placeholder='username'
                                 />
                             </div>
                             <div
@@ -105,22 +105,22 @@ const LoginForm = () => {
                                     textAlign: 'start'
                                 }}
                             >
-                                <label htmlFor="Password">{t('password')}</label>
+                                <label htmlFor='Password'>{t('password')}</label>
                                 <Field
-                                    id="password"
-                                    name="password"
-                                    placeholder="password"
-                                    type="password"
+                                    id='password'
+                                    name='password'
+                                    placeholder='password'
+                                    type='password'
                                 />
                                 {errors.password || errors.username ?
-                                    <Alert severity="error">{errors.password}{errors.username}</Alert>
+                                    <Alert severity='error'>{errors.password}{errors.username}</Alert>
                                     : null
                                 }
                             </div>
                             <Button
-                                type="submit"
-                                variant="contained"
-                                size="large"
+                                type='submit'
+                                variant='contained'
+                                size='large'
                                 sx={{
                                     background: '#72c0b5',
                                     marginTop: 3
