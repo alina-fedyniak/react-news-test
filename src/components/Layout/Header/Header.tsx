@@ -40,7 +40,12 @@ const Header = () => {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
-        dispatch(logOut());
+    };
+
+    const act = (routeName: string) => {
+        if (routeName === Routes.LOGOUT) {
+            dispatch(logOut());
+        }
     };
 
     return (
@@ -175,7 +180,7 @@ const Header = () => {
                                     return (
                                         <MenuItem key={setting.title} onClick={handleCloseUserMenu}>
                                         <Typography textAlign="center">
-                                            <Link
+                                            <Link onClick={ () => act(setting.route)}
                                                 to={setting.route}
                                                 style={{textDecoration: 'none', color: 'inherit'}}
                                             >

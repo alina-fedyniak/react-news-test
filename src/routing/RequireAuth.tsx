@@ -6,8 +6,8 @@ export const RequireAuth = ({ children }: { children: JSX.Element }) => {
     const isLogin = useAppState(selectIsAuthorised);
     const auth = localStorage.getItem('auth');
 
-    if (!auth) {
-        return isLogin? children : <Navigate to="/" />;
+    if (!auth && !isLogin) {
+        return  <Navigate to="/" />;
     }
     return children;
 };

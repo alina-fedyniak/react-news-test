@@ -43,10 +43,10 @@ const LoginForm = () => {
 
     const onSubmit = useCallback(
         (data: IValues, actions: FormikHelpers<any>) => {
-            localStorage.setItem("username", "admin");
-            dispatch(logIn({username: data.username, password: data.password}));
+            localStorage.setItem('auth', 'true');
+            dispatch(logIn({status: true}));
             actions.resetForm({values: initialValues});
-            navigate("/profile");
+            navigate('/profile');
         }, []);
 
     return (
@@ -78,8 +78,8 @@ const LoginForm = () => {
                         >
                             <Typography
                                 gutterBottom
-                                variant="h5"
-                                component="div"
+                                variant='h5'
+                                component='div'
                                 sx={{textAlign: 'center', color: '#72c0b5'}}
                             >
                                 {t('profileForm')}

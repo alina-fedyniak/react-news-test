@@ -8,17 +8,12 @@ export const authSlice = createSlice({
   name: AUTH_SLICE_NAME,
   initialState,
   reducers: {
-      logIn: (state: AuthState, action: PayloadAction<{username: string | null, password: string | null}>) => {
-          state.username = action.payload.username;
-          state.password = action.payload.password;
-          if (state.username === 'admin' && state.password === '12345') {
-              state.auth = true;
-          }
+      logOut: () => {
+         localStorage.removeItem('auth');
       },
 
-      logOut: () => {
-         localStorage.clear();
-         return {...initialState};
+      logIn: (state: AuthState, action: PayloadAction<{status: boolean}>) => {
+          state.auth = action.payload.status
       }
   },
 });
